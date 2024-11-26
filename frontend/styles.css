@@ -1,0 +1,172 @@
+/* styles.css */
+
+/* Reset dasar untuk konsistensi tampilan antar elemen */
+body, h1, form, table, button {
+  margin: 0; /* Mengatur margin menjadi nol */
+  padding: 0; /* Mengatur padding menjadi nol */
+  box-sizing: border-box; /* Mengatur agar padding dan border dimasukkan ke dalam ukuran elemen */
+}
+
+/* Gaya umum untuk elemen body */
+body {
+  font-family: 'Arial', sans-serif; /* Menggunakan font Arial atau sans-serif */
+  line-height: 1.6; /* Mengatur jarak antar baris */
+  background-color: #f4f4f9; /* Latar belakang halaman berwarna abu-abu muda */
+  color: #333; /* Warna teks berwarna abu-abu gelap */
+  margin: 20px; /* Menambahkan margin sekitar halaman */
+}
+
+/* Kontainer utama untuk membungkus semua elemen di dalamnya */
+.container {
+  max-width: 800px; /* Lebar maksimum kontainer 800px */
+  margin: auto; /* Kontainer berada di tengah halaman */
+  background: #fff; /* Latar belakang putih untuk kontainer */
+  padding: 20px; /* Padding dalam kontainer */
+  border-radius: 10px; /* Sudut membulat pada kontainer */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan pada kontainer */
+}
+
+/* Gaya untuk elemen heading h1 */
+h1 {
+  text-align: center; /* Teks berada di tengah */
+  color: #4CAF50; /* Warna teks hijau */
+  margin-bottom: 20px; /* Jarak bawah 20px */
+}
+
+/* Styling untuk elemen form */
+form {
+  margin-bottom: 20px; /* Jarak bawah form */
+}
+
+/* Label dalam form */
+form label {
+  display: block; /* Mengatur label sebagai blok */
+  margin-bottom: 5px; /* Jarak bawah label */
+  font-weight: bold; /* Teks label tebal */
+}
+
+/* Gaya umum untuk elemen input, select, dan button dalam form */
+form input, form select, form button {
+  width: 100%; /* Elemen mengisi lebar kontainer */
+  padding: 10px; /* Padding dalam elemen */
+  margin-bottom: 15px; /* Jarak bawah antar elemen */
+  border: 1px solid #ccc; /* Border abu-abu muda */
+  border-radius: 5px; /* Sudut membulat */
+  font-size: 16px; /* Ukuran font 16px */
+}
+
+/* Tombol submit dalam form */
+form button {
+  background-color: #4CAF50; /* Warna tombol hijau */
+  color: white; /* Warna teks putih */
+  border: none; /* Tidak ada border */
+  cursor: pointer; /* Mengubah kursor menjadi pointer */
+}
+
+/* Gaya tombol saat di-hover (disorot) */
+form button:hover {
+  background-color: #45a049; /* Warna tombol saat di-hover */
+}
+
+/* Kontainer untuk ringkasan */
+.summary-container {
+  display: flex; /* Mengatur layout menjadi fleksibel */
+  justify-content: space-between; /* Menyebar elemen ke ujung kiri dan kanan */
+  align-items: center; /* Elemen di tengah secara vertikal */
+  padding: 15px; /* Padding di dalam kontainer */
+  background: #e8f5e9; /* Latar belakang hijau muda */
+  border: 1px solid #4CAF50; /* Border hijau */
+  border-radius: 5px; /* Sudut membulat */
+  margin-bottom: 20px; /* Jarak bawah */
+  font-weight: bold; /* Teks tebal */
+}
+
+/* Setiap item dalam ringkasan */
+.summary-item {
+  flex: 1; /* Setiap item menggunakan ruang yang sama */
+  text-align: center; /* Teks di tengah */
+}
+
+/* Span dalam ringkasan */
+.summary-item span {
+  display: block; /* Mengatur span sebagai blok */
+  font-size: 18px; /* Ukuran font 18px */
+  color: #333; /* Warna teks abu-abu gelap */
+}
+
+/* Label dalam ringkasan */
+.summary-item .label {
+  font-size: 14px; /* Ukuran font untuk label */
+  color: #777; /* Warna label abu-abu terang */
+}
+
+/* Tombol untuk melihat grafik pengeluaran */
+#go-to-chart {
+  background-color: #2196F3; /* Warna tombol biru */
+  color: white; /* Warna teks putih */
+  padding: 10px; /* Padding dalam tombol */
+  border: none; /* Tidak ada border */
+  border-radius: 5px; /* Sudut membulat */
+  cursor: pointer; /* Mengubah kursor menjadi pointer */
+  margin-bottom: 20px; /* Jarak bawah tombol */
+  width: 100%; /* Lebar tombol 100% */
+}
+
+/* Gaya tombol saat di-hover (disorot) */
+#go-to-chart:hover {
+  background-color: #1976D2; /* Warna tombol saat di-hover */
+}
+
+/* Gaya untuk tabel */
+table {
+  width: 100%; /* Lebar tabel 100% */
+  border-collapse: collapse; /* Menghilangkan jarak antar border sel */
+  margin-top: 20px; /* Jarak atas tabel */
+}
+
+/* Gaya untuk header dan sel tabel */
+table th, table td {
+  border: 1px solid #ddd; /* Border abu-abu muda */
+  padding: 8px; /* Padding dalam sel */
+  text-align: center; /* Teks di tengah */
+}
+
+/* Gaya untuk header tabel */
+table th {
+  background-color: #4CAF50; /* Latar belakang header hijau */
+  color: white; /* Warna teks putih */
+}
+
+/* Gaya untuk baris genap dalam tabel */
+table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Latar belakang abu-abu muda */
+}
+
+/* Gaya saat baris dalam tabel di-hover */
+table tr:hover {
+  background-color: #f1f1f1; /* Latar belakang lebih terang saat di-hover */
+}
+
+
+/* Tombol untuk melihat grafik pengeluaran */
+#back-button {
+  background-color: #2196F3; /* Warna tombol biru */
+  color: white; /* Warna teks putih */
+  padding: 10px; /* Padding dalam tombol */
+  border: none; /* Tidak ada border */
+  border-radius: 5px; /* Sudut membulat */
+  cursor: pointer; /* Mengubah kursor menjadi pointer */
+  margin-bottom: 20px; /* Jarak bawah tombol */
+  width: 100%; /* Lebar tombol 100% */
+}
+
+/* Gaya tombol saat di-hover (disorot) */
+#back-button:hover {
+  background-color: #1976D2; /* Warna tombol saat di-hover */
+}
+
+
+
+
+
+

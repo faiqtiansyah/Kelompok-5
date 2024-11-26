@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Metadata dasar dokumen HTML -->
+  <meta charset="UTF-8"> <!-- Set karakter encoding -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Agar halaman responsif di perangkat mobile -->
+  <title>Catatan Keuangan</title> <!-- Judul halaman -->
+  <link rel="stylesheet" href="styles.css"> <!-- Link ke file CSS eksternal -->
+</head>
+  
+<body>
+  <!-- Kontainer utama yang membungkus semua elemen halaman -->
+  <div class="container">
+    <h1>Catatan Keuangan</h1> <!-- Judul halaman -->
+
+    <!-- Form Input: untuk menambahkan transaksi baru -->
+    <form id="transaction-form">
+      <!-- Input tanggal transaksi -->
+      <label for="tanggal">Tanggal:</label>
+      <input type="date" id="tanggal" name="tanggal" required />
+
+      <!-- Input tipe uang (Pemasukan atau Pengeluaran) -->
+      <label for="tipe_uang">Tipe Uang:</label>
+      <select id="tipe_uang" name="tipe_uang" required>
+        <option value="">Pilih Tipe</option> <!-- Placeholder -->
+        <option value="Pemasukan">Pemasukan</option>
+        <option value="Pengeluaran">Pengeluaran</option>
+      </select>
+
+      <!-- Input kategori transaksi -->
+      <label for="kategori">Kategori:</label>
+      <select id="kategori" name="kategori" required></select> <!-- Kategori akan diisi secara dinamis menggunakan JavaScript -->
+
+      <!-- Input deskripsi transaksi -->
+      <label for="deskripsi">Deskripsi:</label>
+      <input type="text" id="deskripsi" name="deskripsi" placeholder="Masukkan deskripsi" />
+
+      <!-- Input jumlah uang -->
+      <label for="jumlah">Jumlah:</label>
+      <input type="number" id="jumlah" name="jumlah" placeholder="Masukkan jumlah" required />
+
+      <!-- Tombol submit untuk menambah transaksi -->
+      <button type="submit">Tambah Transaksi</button>
+    </form>
+
+    <!-- Ringkasan: total pemasukan, pengeluaran, dan saldo akan dimuat di sini secara dinamis -->
+    <div id="summary" class="summary-container">
+      <!-- Total Pemasukan, Pengeluaran, dan Saldo akan ditampilkan di sini melalui JavaScript -->
+    </div>
+
+    <!-- Tombol untuk membuka halaman grafik pengeluaran -->
+    <button id="go-to-chart">Lihat Grafik Pengeluaran</button>
+
+    <!-- Tabel Data: untuk menampilkan daftar transaksi -->
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th> <!-- Kolom ID transaksi -->
+          <th>Tanggal</th> <!-- Kolom tanggal transaksi -->
+          <th>Kategori</th> <!-- Kolom kategori transaksi -->
+          <th>Deskripsi</th> <!-- Kolom deskripsi transaksi -->
+          <th>Tipe Uang</th> <!-- Kolom tipe uang (Pemasukan/Pengeluaran) -->
+          <th>Jumlah</th> <!-- Kolom jumlah uang -->
+        </tr>
+      </thead>
+      <tbody id="transaction-list">
+        <!-- Daftar transaksi akan dimuat di sini menggunakan JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <!------------------------------ Bagian edit dan hapus data yang sudah di submit ------------------------------>
+
+  
+
+
+
+  <!-- Menghubungkan ke file JavaScript eksternal -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grafik Pengeluaran</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Grafik Pengeluaran Berdasarkan Kategori</h1>
+    <canvas id="pengeluaranChart" width="400" height="400"></canvas>
+
+    <h2>Daftar Pengeluaran Berdasarkan Kategori</h2>
+    <table id="pengeluaran-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Kategori</th>
+          <th>Jumlah</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Data pengeluaran kategori akan diisi melalui JavaScript -->
+      </tbody>
+    </table>
+
+    <button id="back-button">Kembali ke Halaman Utama</button>
+  </div>
+
+  <script>
+    // Fungsi asinkron untuk mengambil data pengeluaran dan menampilkan grafik
+    async function fetchAndDisplayChart() {
+      const response = await fetch("http://localhost:3000/api/pengeluaran-kategori");
+      const data = await response.json();
+
+      const labels = data.map(item => item.kategori);
+      const values = data.map(item => item.total);
+
+      const ctx = document.getElementById('pengeluaranChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Pengeluaran per Kategori',
+            data: values,
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4CAF50', '#FF9F40', '#9966FF'],
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'top' }
+          }
+        }
+      });
+    }
+
+    // Fungsi asinkron untuk mengambil dan menampilkan data tabel pengeluaran
+    async function fetchAndDisplayTable() {
+      const response = await fetch("http://localhost:3000/api/pengeluaran-kategori-sorted");
+      const data = await response.json();
+
+      const tableBody = document.getElementById("pengeluaran-table").querySelector("tbody");
+      tableBody.innerHTML = data
+        .map((item, index) => `
+          <tr>
+            <td>${index + 1}</td>
+            <td>${item.kategori}</td>
+            <td>Rp ${parseFloat(item.total).toLocaleString("id-ID")}</td>
+          </tr>
+        `)
+        .join("");
+    }
+
+    // Fungsi untuk kembali ke halaman utama
+    document.getElementById('back-button').addEventListener('click', () => {
+      window.location.href = 'index.html';
+    });
+
+    // Panggil fungsi untuk menampilkan grafik dan tabel setelah halaman selesai dimuat
+    window.onload = async () => {
+      await fetchAndDisplayChart();
+      await fetchAndDisplayTable();
+    };
+  </script>
+</body>
+</html>
