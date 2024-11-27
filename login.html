@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catatan Keuangan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fafafa;
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .title {
+            font-family: 'Billabong', sans-serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #3ba43b;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3178c6;
+        }
+        .link {
+            color: #3ba43b;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="loginForm">
+            <div class="title">Catatan Keuangan</div>
+            <input id="loginUsername" type="text" placeholder="Nomor telepon, email, atau nama pengguna">
+            <input id="loginPassword" type="password" placeholder="Kata sandi">
+            <button onclick="login()">Masuk</button>
+            <div class="link" onclick="showSignUp()">Tidak memiliki akun? Buat akun.</div>
+        </div>
+
+        <div id="signUpForm" class="hidden">
+            <div class="title">Buat akun</div>
+            <input id="signUpUsername" type="text" placeholder="Nama pengguna">
+            <input id="signUpPassword" type="password" placeholder="Kata sandi">
+            <button onclick="signUp()">Buat akun</button>
+            <div class="link" onclick="showLogin()">Sudah memiliki akun? Masuk.</div>
+        </div>
+    </div>
+
+    <script>
+        // Function to switch between login and sign-up forms
+        function showSignUp() {
+            document.getElementById('loginForm').classList.add('hidden');
+            document.getElementById('signUpForm').classList.remove('hidden');
+        }
+
+        function showLogin() {
+            document.getElementById('signUpForm').classList.add('hidden');
+            document.getElementById('loginForm').classList.remove('hidden');
+        }
+
+        // Sign Up Functionality
+        function signUp() {
+            const username = document.getElementById('signUpUsername').value;
+            const password = document.getElementById('signUpPassword').value;
+
+            if (!username || !password) {
+                alert('Silakan masukkan nama pengguna dan kata sandi.');
+                return;
+            }
+
+            // Check if the user already exists
+            const existingUsers = JSON.parse(localStorage.getItem('users')) || {};
+            if (existingUsers[username]) {
+                alert('Nama pengguna sudah ada. Silakan pilih yang lain.');
+                return;
+            }
+
+            // Save the new user in localStorage
+            existingUsers[username] = password;
+            localStorage.setItem('users', JSON.stringify(existingUsers));
+            alert('Buat akun berhasil! Kamu sekarang bisa masuk.');
+            showLogin();
+        }
+
+        // Login Functionality
+        function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!username || !password) {
+                alert('Silakan masukkan nama pengguna dan kata sandi.');
+                return;
+            }
+
+            const existingUsers = JSON.parse(localStorage.getItem('users')) || {};
+            if (existingUsers[username] === password) {
+                alert(`Selamat Datang, ${username}! Mengalihkan ke halaman utama...`);
+                window.location.href = 'main.html'; // Redirect ke main.html
+            } else {
+                alert('Nama pengguna atau kata sandi salah.');
+            }
+        }
+    </script>
+</body>
+</html>
